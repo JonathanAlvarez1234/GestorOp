@@ -6,6 +6,7 @@ export const getUsers = async (req = request, res = response) => {
     try {
         const { limite = 10, desde = 0 } = req.query;
         const query = { estado: true };
+
         const [total, users] = await Promise.all([
             User.countDocuments(query),
             User.find(query)
@@ -21,7 +22,7 @@ export const getUsers = async (req = request, res = response) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: "Error al obtener usuario",
+            message: "Error getting user",
             error
         });
     }
@@ -29,13 +30,12 @@ export const getUsers = async (req = request, res = response) => {
 
 export const getUserById = async (req, res) => {
     try {
-
         const { id } = req.params;
         const user = await User.findById(id);
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: "Usuario no encontrado"
+                msg: "Usuario not found"
             });
         }
 
@@ -46,7 +46,7 @@ export const getUserById = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error al obtener usuario",
+            msg: "Error getting user",
             error
         });
     }
@@ -60,7 +60,7 @@ export const updateUser = async (req, res = response) => {
         if (req.usuario.role === "USER_ROLE" && id !== req.usuario._id.toString()) {
             return res.status(403).json({
                 success: false,
-                msg: "No tiene autorización para actualizar la información de otro usuario."
+                msg: "No tiene autorización para actualizar la información de otro usuario"
             });
         }
 
@@ -69,29 +69,30 @@ export const updateUser = async (req, res = response) => {
         }
 
         const user = await User.findByIdAndUpdate(id, data, { new: true });
+
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: "Usuario no encontrado"
+                msg: "User not found"
             });
         }
 
         res.status(200).json({
             success: true,
-            msg: "Usuario actualizado",
+            msg: "Updated user",
             user
         });
 
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error al actualizar usuario",
+            msg: "Error updating user",
             error
         });
     }
 };
 
-export const unsubscribeStudent = async (req, res) => {
+export const unsubscribeSesion = async (req, res) => {
     try {
         const userId = req.usuario._id;
         const user = await User.findByIdAndUpdate(userId, { estado: false }, { new: true });
@@ -99,24 +100,23 @@ export const unsubscribeStudent = async (req, res) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: 'Usuario no encontrado'
+                msg: 'User not found'
             });
         }
 
         res.status(200).json({
             success: true,
-            msg: 'Sesión cerrada exitosamente',
+            msg: 'Logged out successfully',
             user
         });
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: 'Ocurrió un error al cerrar sesión',
+            msg: 'Logout error',
             error
         });
     }
 };
-
 
 export const deleteUser = async (req, res) => {
     try {
@@ -134,19 +134,19 @@ export const deleteUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: 'Usuario no encontrado'
+                msg: 'User not found'
             });
         }
 
         res.status(200).json({
             success: true,
-            msg: 'Usuario desactivado',
+            msg: 'Deactivated user',
             user
         });
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: 'Error al desactivar el usuario',
+            msg: 'Error deactivating user',
             error
         });
     }

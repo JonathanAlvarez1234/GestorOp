@@ -26,9 +26,9 @@ const routes = (app) =>{
 const conectarDB = async () => {
     try{
         await dbConnection();
-        console.log("Conexión a la base de datos exitosa");
+        console.log("Database connection successful");
     }catch(error){
-        console.error('Error al conectar con la base de datos', error);
+        console.error('Error connecting to the database', error);
         process.exit(1);
     }
 }

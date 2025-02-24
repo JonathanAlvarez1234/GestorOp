@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getUsers, getUserById, updateUser, deleteUser, assignCourseToStudent, unsubscribeStudent,getAssignedCourses} from "./user.controller.js";
+import { getUsers, getUserById, updateUser, deleteUser, assignCourseToStudent, unsubscribeSesion,getAssignedCourses, unsubscribeSesion} from "./user.controller.js";
 import { existeUsuarioById } from "../helpers/db-validator.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarRol } from "../middlewares/validar-roles.js";
@@ -51,7 +51,7 @@ router.delete(
             validarJWT,
             validarRol("USER_ROLE")
         ],
-        unsubscribeStudent
+        unsubscribeSesion
 );
     
 router.delete(
@@ -67,8 +67,4 @@ router.delete(
 )
 
 export default router;
-
-
-
-
 
