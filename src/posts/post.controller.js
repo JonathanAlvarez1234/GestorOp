@@ -16,7 +16,7 @@ export const savePost = async (req, res) => {
             title: data.title,
             category: data.category,
             content: data.content,
-            keeper: user._id,
+            creator: user._id,
             status: true
         });
 
@@ -46,10 +46,10 @@ export const getPosts = async(req, res) => {
             .limit(Number(limite));
             
         const postsWithOwnerNames =  await Promise.all(posts.map(async (post) =>{
-            const owner = await User.findById(post.keeper);
+            const owner = await User.findById(post.creator);//
             return{
                 ...post.toObject(),
-                keeper: owner ? owner.nombre: "Creator not found"
+                creator: owner ? owner.nombre: "Creator not found"
             }
         }));
         
@@ -83,13 +83,13 @@ export const searchPost = async (req, res) =>{
             })
         }
 
-        const owner = await User.findById(post.keeper);
+        const owner = await User.findById(post.creator);
 
         res.status(200).json({
             success: true,
             post: {
                 ...post.toObject(),
-                keeper: owner ? owner.nombre : "Creator not found"
+                creator: owner ? owner.nombre : "Creator not found"
             }
         })
     } catch (error) {
@@ -133,7 +133,7 @@ export const deletePost = async(req, res) => {
 export const updatePost = async (req, res) => {
     try {
         const { id } = req.params;
-        const { _id, keeper, ...data } = req.body; 
+        const { _id, creator, ...data } = req.body;
 
         if (req.usuario.role === "USER_ROLE" && post.user.toString() !== req.usuario._id.toString()) {
             return res.status(403).json({ 
