@@ -5,6 +5,7 @@ export const savePost = async (req, res) => {
     try {
         const data = req.body;
         const user = await User.findOne({ email: data.email });
+
         if (!user) {
             return res.status(400).json({
                 success: false,
@@ -24,7 +25,7 @@ export const savePost = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: "Post Created",
+            message: "Post created",
             post
         });
     } catch (error) {
@@ -40,13 +41,14 @@ export const savePost = async (req, res) => {
 export const getPosts = async(req, res) => {
     const {limite = 10, desde = 0} = req.query;
     const query = {status: true};
+
     try {
         const posts = await Post.find(query)
             .skip(Number(desde))
             .limit(Number(limite));
             
         const postsWithOwnerNames =  await Promise.all(posts.map(async (post) =>{
-            const owner = await User.findById(post.creator);//
+            const owner = await User.findById(post.keeper);
             return{
                 ...post.toObject(),
                 creator: owner ? owner.nombre: "Creator not found"
@@ -102,10 +104,11 @@ export const searchPost = async (req, res) =>{
 }
 
 export const deletePost = async(req, res) => {
-
     const {id} = req.params;
 
     try {
+
+        const post = await Post.findByIdAndUpdate(id, {status: false},  { new: true });
 
         if (req.usuario.role === "USER_ROLE" && post.user.toString() !== req.usuario._id.toString()) {
             return res.status(403).json({ 
@@ -113,8 +116,6 @@ export const deletePost = async(req, res) => {
                 msg: "No tiene autorización para modificar esta publicación" 
             });
         }
-
-        await Post.findByIdAndUpdate(id, {status: false});
         
         res.status(200).json({
             success: true,
@@ -131,9 +132,11 @@ export const deletePost = async(req, res) => {
 }
 
 export const updatePost = async (req, res) => {
+
     try {
         const { id } = req.params;
-        const { _id, creator, ...data } = req.body;
+        const { _id, creator, ...data } = req.body; 
+        const post = await Post.findByIdAndUpdate(id, data, { new: true });
 
         if (req.usuario.role === "USER_ROLE" && post.user.toString() !== req.usuario._id.toString()) {
             return res.status(403).json({ 
@@ -141,8 +144,6 @@ export const updatePost = async (req, res) => {
                 msg: "No tiene autorización para modificar esta publicación" 
             });
         }
-
-        const post = await Post.findByIdAndUpdate(id, data, { new: true });
 
         if (!post) {
             return res.status(404).json({
@@ -164,4 +165,4 @@ export const updatePost = async (req, res) => {
             error
         });
     }
-}    
+}

@@ -10,7 +10,7 @@ const router = Router();
 
 router.get("/", getUsers);
 
-router.get('/findCourse',
+router.get('/findUser',
     [
         validarJWT
     ] 
@@ -27,7 +27,7 @@ router.get(
 )
 
 router.post(
-    "/assign-course", [
+    "/assigne", [
         validarJWT,
         validarRol("ADMIN_ROLE")
     ]
