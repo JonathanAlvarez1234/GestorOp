@@ -5,10 +5,12 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         required: [true, "The content is required"]
     },
-    creatorCrUser: { type: mongoose.Schema.Types.ObjectId, 
+    creatorCrUser: { 
+        type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 
         required: true },
-    creatorCrPost: { type: mongoose.Schema.Types.ObjectId, 
+    creatorCrPost: { 
+        type: mongoose.Schema.Types.ObjectId, 
         ref: 'Post', 
         required: true },
     status: {

@@ -6,7 +6,6 @@ export const getUsers = async (req = request, res = response) => {
     try {
         const { limite = 10, desde = 0 } = req.query;
         const query = { estado: true };
-
         const [total, users] = await Promise.all([
             User.countDocuments(query),
             User.find(query)
@@ -35,7 +34,7 @@ export const getUserById = async (req, res) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: "Usuario not found"
+                msg: "User not found"
             });
         }
 
@@ -60,7 +59,7 @@ export const updateUser = async (req, res = response) => {
         if (req.usuario.role === "USER_ROLE" && id !== req.usuario._id.toString()) {
             return res.status(403).json({
                 success: false,
-                msg: "No tiene autorización para actualizar la información de otro usuario"
+                msg: "No tiene autorizacón para actualizar la información de otro usuario"
             });
         }
 
@@ -79,7 +78,7 @@ export const updateUser = async (req, res = response) => {
 
         res.status(200).json({
             success: true,
-            msg: "Updated user",
+            msg: "User updated",
             user
         });
 
@@ -91,65 +90,3 @@ export const updateUser = async (req, res = response) => {
         });
     }
 };
-
-export const unsubscribeSesion = async (req, res) => {
-    try {
-        const userId = req.usuario._id;
-        const user = await User.findByIdAndUpdate(userId, { estado: false }, { new: true });
-
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                msg: 'User not found'
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            msg: 'Logged out successfully',
-            user
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            msg: 'Logout error',
-            error
-        });
-    }
-};
-
-export const deleteUser = async (req, res) => {
-    try {
-        const { id } = req.params;
-
-        if (req.usuario.role !== "ADMIN_ROLE") {
-            return res.status(403).json({
-                success: false,
-                msg: "No tiene autorización para eliminar a otros usuarios"
-            });
-        }
-
-        const user = await User.findByIdAndUpdate(id, { estado: false }, { new: true });
-
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                msg: 'User not found'
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            msg: 'Deactivated user',
-            user
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            msg: 'Error deactivating user',
-            error
-        });
-    }
-};
-
-

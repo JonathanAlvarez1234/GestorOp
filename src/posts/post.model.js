@@ -5,15 +5,17 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: [true, "The title is required"]
     },
-    category: {
-        type: String,
-        required: [true, "The category is required"]
+    category: {  
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Category',  
+        required: true 
     },
     content: {
         type: String,
         required: [true, "The content is required"]
     },
-    creator: { type: mongoose.Schema.Types.ObjectId, 
+    creator: { 
+        type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 
         required: true },
     status: {

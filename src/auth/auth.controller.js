@@ -3,7 +3,6 @@ import Usuario from '../users/user.model.js';
 import { generarJWT } from '../helpers/generate-jwt.js';
 
 export const login = async (req, res) => {
-    
     const {email,password, username} = req.body;
 
     try {
@@ -50,9 +49,16 @@ export const login = async (req, res) => {
     }
 }
 
-export const register  = async (req, res) => {
+export const register = async (req, res) => {
     try {
         const data = req.body;
+
+        if (data.role === "ADMIN_ROLE") {
+            return res.status(403).json({
+                success: false,
+                message: "No se puede registrar un usuario con el rol ADMIN_ROLE"
+            });
+        }
 
         const encryptedPassword = await hash(data.password);
 
@@ -63,11 +69,11 @@ export const register  = async (req, res) => {
             email: data.email,
             phone: data.phone,
             password: encryptedPassword,
-            role: data.role
+            role: data.role || "USER_ROLE"
         })
 
         return res.status(201).json({
-            message: "Usuario registrado exitosamente",
+            message: "User register successfully",
             userDetails:{
                 user: user.email
             }
@@ -77,10 +83,9 @@ export const register  = async (req, res) => {
         console.log(error);
 
         return res.status(500).json({
-            message: "Error en el registro de usuario",
+            message: "User registration failed",
             error: error.message
         })
     }
 }
-
 
