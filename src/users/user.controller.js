@@ -57,7 +57,7 @@ export const updateUser = async (req, res = response) => {
         const { password, ...data } = req.body;
 
         if (req.usuario.role === "USER_ROLE" && id !== req.usuario._id.toString()) {
-            return res.status(403).json({
+            return res.status(400).json({
                 success: false,
                 msg: "No tiene autorizacón para actualizar la información de otro usuario"
             });

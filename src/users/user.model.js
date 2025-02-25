@@ -22,9 +22,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "The password is required"]
     },
+    phone: {
+        type: String,
+        required: [true, "The phone is required"]
+    },
     role: {
         type: String,
-        required: [true, "The role is required"],
         enum: ["ADMIN_ROLE","USER_ROLE"],
         default: "USER_ROLE"
     },

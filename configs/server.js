@@ -15,7 +15,7 @@ import Category from "../src/categories/category.model.js";
 import Usuario from "../src/users/user.model.js";
 import { hash } from "argon2";
 
-const configurarMiddlewares = (app) => {
+const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}));
     app.use(cors());
     app.use(express.json());
@@ -24,55 +24,53 @@ const configurarMiddlewares = (app) => {
     app.use(limiter);
 }
 
-const configurarRutas = (app) =>{
-        app.use("/postSystem/v1/auth", authRoutes);
-        app.use("/postSystem/v1/users", userRoutes);
-        app.use("/postSystem/v1/posts", postRoutes);
-        app.use("/postSystem/v1/comments", commentRoutes);
-        app.use("/postSystem/v1/categories", categoryRoutes);
+const routes = (app) =>{
+        app.use("/gestorOp/v1/auth", authRoutes);
+        app.use("/gestorOp/v1/users", userRoutes);
+        app.use("/gestorOp/v1/posts", postRoutes);
+        app.use("/gestorOp/v1/comments", commentRoutes);
+        app.use("/gestorOp/v1/categories", categoryRoutes);
 
 }
 
-const initializeCategories = async () => {
+const startCategory = async () => {
     try {
         const defaultCategory = await Category.findOne({ name: "General" });
         if (!defaultCategory) {
             await Category.create({ name: "General" });
-            console.log("Categoría por defecto creada: General");
+            console.log("Default category created");
         } else {
-            console.log("Categoría por defecto ya existente");
+            console.log("Existing default category");
         }
     } catch (error) {
-        console.error("Error al inicializar categorías:", error);
+        console.error("Error initializing categories:", error);
     }
 };
 
-
-
-const crearAdmin = async () => {
+const createAdministrator = async () => {
     try {
         const adminExistente = await Usuario.findOne({ role: "ADMIN_ROLE" });
 
         if (!adminExistente) {
-            const passwordEncriptada = await hash("Admin123");
+            const passwordEncrypted = await hash("Admin123");
 
             const admin = new Usuario({
                 name: "Admin",
                 surname: "istrador",
                 username: "4dmin",
                 email: "admin@gmail.com",
-                phone: "12346789",
-                password: passwordEncriptada,
+                phone: "20003000",
+                password: passwordEncrypted,
                 role: "ADMIN_ROLE"
             });
 
             await admin.save();
-            console.log("Administrador creado exitosamente");
+            console.log("Administrator created successfully");
         } else {
-            console.log("El administrador ya existente");
+            console.log("Existing administrator");
         }
     } catch (error) {
-        console.error("Error al crear el administrador:", error);
+        console.error("Error creating administrator:", error);
     }
 };
 
@@ -80,10 +78,10 @@ const crearAdmin = async () => {
 const conectarDB = async () => {
     try {
         await dbConnection();
-        console.log("Conexion existosa con la base de datos");
-        await initializeCategories();
+        console.log("Successful connection with the database");
+        await startCategory();
     } catch (error) {
-        console.log("Error al conectar con la base de datos", error);
+        console.log("Error connecting to the database", error);
     }
 }
 
@@ -92,9 +90,9 @@ export const initServer = async () => {
     const port = process.env.PORT || 3001;
 
     await conectarDB();
-    await crearAdmin();
-    configurarMiddlewares(app);
-    configurarRutas(app);
+    await createAdministrator();
+    middlewares(app);
+    routes(app);
 
     app.listen(port, () => {
         console.log(`Server running on port ${port}`);

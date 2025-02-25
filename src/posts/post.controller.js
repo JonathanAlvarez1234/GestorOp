@@ -117,7 +117,7 @@ export const deletePost = async(req, res) => {
         }
 
         if (req.usuario.role === "USER_ROLE" && post.creator.toString() !== req.usuario._id.toString()) {
-            return res.status(403).json({ 
+            return res.status(400).json({ 
                 success: false, 
                 msg: "No tienen autorización para eliminar esta publicación" 
             });
@@ -162,7 +162,7 @@ export const updatePost = async (req, res) => {
         }
 
         if (req.usuario.role === "USER_ROLE" && post.creator._id.toString() !== req.usuario._id.toString()) {
-            return res.status(403).json({ 
+            return res.status(400).json({ 
                 success: false, 
                 msg: "No tiene auorización para modificar esta publicación" 
             });

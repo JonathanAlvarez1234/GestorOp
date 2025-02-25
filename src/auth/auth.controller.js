@@ -54,7 +54,7 @@ export const register = async (req, res) => {
         const data = req.body;
 
         if (data.role === "ADMIN_ROLE") {
-            return res.status(403).json({
+            return res.status(400).json({
                 success: false,
                 message: "No se puede registrar un usuario con el rol ADMIN_ROLE"
             });
@@ -72,7 +72,7 @@ export const register = async (req, res) => {
             role: data.role || "USER_ROLE"
         })
 
-        return res.status(201).json({
+        return res.status(200).json({
             message: "User register successfully",
             userDetails:{
                 user: user.email
