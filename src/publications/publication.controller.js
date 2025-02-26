@@ -22,7 +22,7 @@ export const savePublication = async (req, res) => {
             });
         }
 
-        const post = new Post({
+        const post = new Publication({
             title,
             category,
             content,

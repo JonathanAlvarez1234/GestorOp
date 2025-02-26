@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "2aa47379-7bef-4130-8b9b-a9924df264f0",
+		"name": "Categories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37557519"
+	},
+	"item": [
+		{
+			"name": "Agregar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JlOTQ0MDA5MjFlZmU4MDc2MTNkZGYiLCJpYXQiOjE3NDA1NDU0NDQsImV4cCI6MTc0MDU0OTA0NH0.wfF4PYRw6ejiYMKpsVmg0OPBfDHdHzHvrSdmbptnuh8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Ventas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/gestorOp/v1/categories?=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"gestorOp",
+						"v1",
+						"categories"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JlOTQ0MDA5MjFlZmU4MDc2MTNkZGYiLCJpYXQiOjE3NDA1NDU2MjgsImV4cCI6MTc0MDU0OTIyOH0.kjFCncC4sE3iJ-8yisV-80ENEDhMqhr76IdhYsqIboA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Noticias\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/gestorOp/v1/categories/67be9db0a6db5236b623e0c0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"gestorOp",
+						"v1",
+						"categories",
+						"67be9db0a6db5236b623e0c0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ver",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/gestorOp/v1/categories/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"gestorOp",
+						"v1",
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JlOTQ0MDA5MjFlZmU4MDc2MTNkZGYiLCJpYXQiOjE3NDA1NDU2MjgsImV4cCI6MTc0MDU0OTIyOH0.kjFCncC4sE3iJ-8yisV-80ENEDhMqhr76IdhYsqIboA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/gestorOp/v1/categories/67bea155963af2c070b9700a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"gestorOp",
+						"v1",
+						"categories",
+						"67bea155963af2c070b9700a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

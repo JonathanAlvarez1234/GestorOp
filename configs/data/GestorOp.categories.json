@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "67be94400921efe807613dda"
+  },
+  "name": "General",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-26T04:10:40.277Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T04:10:40.277Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be9db0a6db5236b623e0c0"
+  },
+  "name": "Noticias",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-26T04:50:56.139Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T04:54:08.676Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be9defa6db5236b623e0c3"
+  },
+  "name": "Memes",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-26T04:51:59.632Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T04:51:59.632Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bea155963af2c070b9700a"
+  },
+  "name": "Publicidad",
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-26T05:06:29.674Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T05:08:03.618Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bea47e963af2c070b97011"
+  },
+  "name": "Ventas",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-26T05:19:58.315Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T05:19:58.315Z"
+  }
+}]

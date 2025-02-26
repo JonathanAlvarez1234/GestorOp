@@ -8,7 +8,7 @@ import { dbConnection } from "./mongo.js";
 import limiter from '../src/middlewares/validar-cant-peticiones.js'
 import authRoutes from '../src/auth/auth.routes.js'
 import userRoutes from "../src/users/user.routes.js"
-import publicationRoutes from "../src/publications/publication.model.js"
+import publicationRoutes from "../src/publications/publication.routes.js"
 import commentRoutes from "../src/comment/comment.routes.js"
 import { createAdministrator } from "../src/users/user.controller.js";
 import categoryRoutes from "../src/categories/category.routes.js";

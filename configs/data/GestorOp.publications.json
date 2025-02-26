@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "67bea88c5e7fe0738375d196"
+  },
+  "title": "Monitores",
+  "content": "Monitores a baratos y buenos",
+  "creator": {
+    "$oid": "67be976675c6d35d9e4c849d"
+  },
+  "category": {
+    "$oid": "67bea47e963af2c070b97011"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-26T05:37:16.048Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T05:37:16.048Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bea96b5e7fe0738375d19c"
+  },
+  "title": "Teclados",
+  "content": "Teclados muy baratos, detalles: les falta teclas",
+  "creator": {
+    "$oid": "67be94840921efe807613de2"
+  },
+  "category": {
+    "$oid": "67bea47e963af2c070b97011"
+  },
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-26T05:40:59.296Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T05:46:26.976Z"
+  }
+}]
