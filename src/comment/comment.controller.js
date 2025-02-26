@@ -1,12 +1,12 @@
 import User from "../users/user.model.js";
-import Post from "../posts/post.model.js";
+import Publication from "../publications/publication.model.js";
 import Comment from "../comment/comment.model.js";
 
 export const saveComment = async (req, res) => {
     try {
         const data = req.body;
         const user = await User.findOne({ email: data.email });
-        const post = await Post.findById(data.postId);
+        const post = await Publication.findById(data.postId);
 
         if (!user) {
             return res.status(400).json({
@@ -24,8 +24,8 @@ export const saveComment = async (req, res) => {
 
         const comment = new Comment({
             content: data.content,
-            creatorCrUserUser: user._id,
-            creatorCrPostPost: post._id,
+            creatorCrUser: user._id,
+            creatorCrPost: post._id,
             status: true
         });
 
@@ -43,41 +43,6 @@ export const saveComment = async (req, res) => {
             message: "Error saving comment",
             error
         });
-    }
-}
-
-export const getComments = async(req, res) => {
-    const {limite = 10, desde = 0} = req.query;
-    const query = {status: true};
-    try {
-        const comments = await Comment.find(query)
-            .skip(Number(desde))
-            .limit(Number(limite));
-            
-        const commentsWithOwnerNames =  await Promise.all(comments.map(async (comment) =>{
-            const owner = await User.findById(comment.creatorCrUser);
-            const post = await Post.findById(comment.creatorCrPost)
-            return{
-                ...comment.toObject(),
-                creatorCrUser: owner ? owner.nombre: "User not found",
-                creatorCrPost: post ? post.title: "Post not found"
-            }
-        }));
-        
-        const total = await Comment.countDocuments(query);
-
-        res.status(200).json({
-            success: true,
-            total,
-            comments: commentsWithOwnerNames
-        })
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Error getting comment",
-            error
-        })
     }
 }
 
@@ -182,5 +147,40 @@ export const updateComment = async (req, res) => {
             msg: "Error updating comment",
             error
         });
+    }
+}
+
+export const getComments = async(req, res) => {
+    const {limite = 10, desde = 0} = req.query;
+    const query = {status: true};
+    try {
+        const comments = await Comment.find(query)
+            .skip(Number(desde))
+            .limit(Number(limite));
+            
+        const commentsWithOwnerNames =  await Promise.all(comments.map(async (comment) =>{
+            const owner = await User.findById(comment.creatorCrUser);
+            const post = await Publication.findById(comment.creatorCrPost)
+            return{
+                ...comment.toObject(),
+                creatorCrUser: owner ? owner.nombre: "User not found",
+                creatorCrPost: post ? post.title: "Post not found"
+            }
+        }));
+        
+        const total = await Comment.countDocuments(query);
+
+        res.status(200).json({
+            success: true,
+            total,
+            comments: commentsWithOwnerNames
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error getting comment",
+            error
+        })
     }
 }

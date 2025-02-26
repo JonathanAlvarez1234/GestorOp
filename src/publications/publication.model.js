@@ -1,14 +1,9 @@
 import mongoose from "mongoose";
 
-const PostSchema = new mongoose.Schema({
+const PublicationSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "The title is required"]
-    },
-    category: {  
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Category',  
-        required: true 
     },
     content: {
         type: String,
@@ -18,6 +13,11 @@ const PostSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 
         required: true },
+    category: {  
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Category',  
+        required: true 
+    },
     status: {
         type: Boolean,
         default: true
@@ -27,5 +27,5 @@ const PostSchema = new mongoose.Schema({
     versionKey: false   
 });
 
-export default mongoose.model("Post", PostSchema);
+export default mongoose.model("Publication", PublicationSchema);
 

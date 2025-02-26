@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import {savePost, getPosts, searchPost, deletePost, updatePost} from "./post.controller.js";
-import {validarCampos} from "../middlewares/validar-campos.js";
-import {validarJWT} from "../middlewares/validar-jwt.js";
+import { savePublication, getPublications, searchPublication, deletePublication, updatePublication } from "./publication.controller.js";
+import { validarCampos } from "../middlewares/validar-campos.js";
+import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
@@ -15,10 +15,10 @@ router.post(
         check("content", "El contenido es obligatorio").not().isEmpty(),
         validarCampos
     ],
-    savePost
+    savePublication
 )
 
-router.get("/", getPosts)
+router.get("/", getPublications)
 
 router.get(
     "/findPost/:id",
@@ -27,7 +27,7 @@ router.get(
         check("id", "No es un ID válido").isMongoId(),
         validarCampos
     ],
-    searchPost
+    searchPublication
 )
 
 router.put(
@@ -37,7 +37,7 @@ router.put(
         check("id", "No es un ID válido").isMongoId(),
         validarCampos
     ],
-    updatePost
+    updatePublication
 )
 
 router.delete(
@@ -47,7 +47,7 @@ router.delete(
         check("id", "No es unn ID válido").isMongoId(),
         validarCampos
     ],
-    deletePost
+    deletePublication
 )
 
 export default router;

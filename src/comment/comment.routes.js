@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import {saveComment, getComments, searchComment, deleteComment, updateComment} from "./comment.controller.js";
-import {validarCampos} from "../middlewares/validar-campos.js";
-import {validarJWT} from "../middlewares/validar-jwt.js";
+import { saveComment, getComments, searchComment, deleteComment, updateComment } from "./comment.controller.js";
+import { validarCampos } from "../middlewares/validar-campos.js";
+import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 

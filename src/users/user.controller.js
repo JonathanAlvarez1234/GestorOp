@@ -90,3 +90,30 @@ export const updateUser = async (req, res = response) => {
         });
     }
 };
+
+export const createAdministrator = async () => {
+    try {
+        const adminEnBD = await User.findOne({ role: "ADMIN_ROLE" });
+
+        if (!adminEnBD) {
+            const passwordEncrypted = await hash("Jonas360");
+
+            const admin = new User({
+                name: "Admin",
+                surname: "istrador",
+                username: "4dmin",
+                email: "admin@gmail.com",
+                phone: "20003000",
+                password: passwordEncrypted,
+                role: "ADMIN_ROLE"
+            });
+
+            await admin.save();
+            console.log("Administrator created successfully");
+        } else {
+            console.log("Existing administrator");
+        }
+    } catch (error) {
+        console.error("Error creating administrator:", error);
+    }
+};

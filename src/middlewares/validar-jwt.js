@@ -7,7 +7,7 @@ export const validarJWT = async(req, res, next) => {
 
     if(!token){
         return res.status(401).json({
-            msg: "No hay Token en la petición"
+            msg: "No hay token en la petición"
         })
     }
 
@@ -21,9 +21,9 @@ export const validarJWT = async(req, res, next) => {
             })
         }
 
-        if(!usuario.estado){
+        if(!usuario.status){
             return res.status(401).json({
-                msg: "Token no Válido - Usuario Status: False"
+                msg: "Token no válido - User state: False"
             })
         }
 

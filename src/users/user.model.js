@@ -24,6 +24,8 @@ const UserSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
+        minLength: 8,
+        maxLength: 8,
         required: [true, "The phone is required"]
     },
     role: {

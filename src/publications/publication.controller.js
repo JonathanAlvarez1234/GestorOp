@@ -1,8 +1,8 @@
 import User from "../users/user.model.js";
-import Post from "../posts/post.model.js";
+import Publication from "./publication.model.js";
 import Category from "../categories/category.model.js";
 
-export const savePost = async (req, res) => {
+export const savePublication = async (req, res) => {
     try {
         const { title, category, content } = req.body;
         const user = await User.findById(req.usuario._id); 
@@ -47,18 +47,18 @@ export const savePost = async (req, res) => {
     }
 };
 
-export const getPosts = async(req, res) => {
+export const getPublications = async(req, res) => {
     const { limite = 10, desde = 0 } = req.query;
     const query = { status: true };
     
     try {
-        const posts = await Post.find(query)
+        const posts = await Publication.find(query)
             .populate("creator", "nombre")
             .populate("category", "name")
             .skip(Number(desde))
             .limit(Number(limite));
 
-        const total = await Post.countDocuments(query);
+        const total = await Publication.countDocuments(query);
 
         res.status(200).json({
             success: true,
@@ -75,7 +75,7 @@ export const getPosts = async(req, res) => {
     }
 };
 
-export const searchPost = async (req, res) => {
+export const searchPublication = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -103,11 +103,11 @@ export const searchPost = async (req, res) => {
     }
 };
 
-export const deletePost = async(req, res) => {
+export const deletePublication = async(req, res) => {
     const { id } = req.params;
 
     try {
-        const post = await Post.findById(id);
+        const post = await Publication.findById(id);
 
         if (!post) {
             return res.status(404).json({
@@ -140,7 +140,7 @@ export const deletePost = async(req, res) => {
     }
 };
 
-export const updatePost = async (req, res) => {
+export const updatePublication = async (req, res) => {
     try {
         const { id } = req.params;
         const { category, ...data } = req.body;
@@ -152,7 +152,7 @@ export const updatePost = async (req, res) => {
             });
         }
 
-        const post = await Post.findById(id).populate("creator");
+        const post = await Publication.findById(id).populate("creator");
 
         if (!post) {
             return res.status(404).json({
