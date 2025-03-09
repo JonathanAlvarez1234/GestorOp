@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5bc2e53f-b6b7-41c8-b7d2-075cffdbec31",
+		"_postman_id": "9e4773fb-5057-4f55-8baf-2774b6778e6a",
 		"name": "Auth",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37557519"
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Rene\",\r\n    \"surname\":\"Rosas\",\r\n    \"username\":\"Crosas\",\r\n    \"email\":\"crosas@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"phone\":\"52525252\"\r\n}",
+					"raw": "{\r\n    \"name\":\"Jorge\",\r\n    \"surname\":\"Peralta\",\r\n    \"username\":\"Pepa\",\r\n    \"email\":\"jperalta@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"phone\":\"45789658\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -44,7 +44,38 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"mjose@gmail.com\",\r\n    \"password\":\"5800773525\",\r\n    \"username\":\"Mandril\"\r\n}",
+					"raw": "{\r\n    \"username\":\"Mandril\",\r\n    \"password\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/gestorOp/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"gestorOp",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login-admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"4dmin\",\r\n    \"password\":\"Jonas360\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

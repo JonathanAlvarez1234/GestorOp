@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5abf011d-65e8-4d09-b155-d59831c3cecc",
+		"_postman_id": "2059d6fb-e43f-44a6-a813-10afb39f2eae",
 		"name": "Publications",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37557519"
@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JlOTQ4NDA5MjFlZmU4MDc2MTNkZTIiLCJpYXQiOjE3NDA1NDg0MDEsImV4cCI6MTc0MDU1MjAwMX0.fZTqFdSkkSpQxgqDY-8eyP7yWDaX0NUZkpeBuU6bUDc",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZjNkODdiODgzM2EwNTkzODdmOWMiLCJpYXQiOjE3NDE0ODgwNjUsImV4cCI6MTc0MTQ5MTY2NX0.LSGJuZDcG17HmUFYU2wAnBwoYYt79GQloSrn7ZTHdmQ",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"title\":\"Teclados\",\r\n        \"content\":\"Teclados baratos, detalles: les falta teclas\",\r\n        \"creator\":\"67be94840921efe807613de2\",\r\n        \"category\":\"67bea47e963af2c070b97011\"\r\n}",
+					"raw": "{\r\n        \"title\":\"Ultima hora\",\r\n        \"content\":\"Estudiante de kinal no se gradua por perder una clase\",\r\n        \"creator\":\"67ccf3d87b8833a059387f9c\",\r\n        \"category\":\"67ccfa847b8833a059387fbc\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -47,7 +47,21 @@
 			"name": "Ver",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/gestorOp/v1/publication/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"gestorOp",
+						"v1",
+						"publication",
+						""
+					]
+				}
 			},
 			"response": []
 		},
@@ -58,13 +72,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JlOTQ4NDA5MjFlZmU4MDc2MTNkZTIiLCJpYXQiOjE3NDA1NDg0MDEsImV4cCI6MTc0MDU1MjAwMX0.fZTqFdSkkSpQxgqDY-8eyP7yWDaX0NUZkpeBuU6bUDc",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZjQxZjdiODgzM2EwNTkzODdmYTQiLCJpYXQiOjE3NDE0ODgzMTEsImV4cCI6MTc0MTQ5MTkxMX0.7XCvNaIFyZsyJWWyzR6bIBJmZ_DPSax7ejtxkFi4jPY",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"title\":\"Teclados\",\r\n        \"content\":\"Teclados muy baratos, detalles: les falta teclas\",\r\n        \"creator\":\"67be94840921efe807613de2\",\r\n        \"category\":\"67bea47e963af2c070b97011\"\r\n}",
+					"raw": "{\r\n        \"title\":\"Teclados\",\r\n        \"content\":\"Teclados muy baratos, detalles: les falta teclas :(\",\r\n        \"creator\":\"67ccf41f7b8833a059387fa4\",\r\n        \"category\":\"67ccf9d37b8833a059387fac\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,7 +86,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3001/gestorOp/v1/publication/67bea96b5e7fe0738375d19c",
+					"raw": "http://localhost:3001/gestorOp/v1/publication/67ccfb9c7b8833a059387fcb",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -82,20 +96,20 @@
 						"gestorOp",
 						"v1",
 						"publication",
-						"67bea96b5e7fe0738375d19c"
+						"67ccfb9c7b8833a059387fcb"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Eliminar",
 			"request": {
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JlOTQ4NDA5MjFlZmU4MDc2MTNkZTIiLCJpYXQiOjE3NDA1NDg0MDEsImV4cCI6MTc0MDU1MjAwMX0.fZTqFdSkkSpQxgqDY-8eyP7yWDaX0NUZkpeBuU6bUDc",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZjNkODdiODgzM2EwNTkzODdmOWMiLCJpYXQiOjE3NDE0ODgzOTIsImV4cCI6MTc0MTQ5MTk5Mn0.XSXv24kiJi4q13ZuPWQTNSZ9Evfp5OZGVpt1tEC88o4",
 						"type": "text"
 					}
 				],
@@ -109,7 +123,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3001/gestorOp/v1/publication/67bea96b5e7fe0738375d19c",
+					"raw": "http://localhost:3001/gestorOp/v1/publication/67ccffd17b8833a059387fd7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -119,7 +133,7 @@
 						"gestorOp",
 						"v1",
 						"publication",
-						"67bea96b5e7fe0738375d19c"
+						"67ccffd17b8833a059387fd7"
 					]
 				}
 			},

@@ -10,7 +10,7 @@ router.post(
     "/",
     [
         validarJWT,
-        check("postId", "El ID del post es obligatorio").isMongoId(),
+        check("publicationId", "El ID de la publicación es obligatorio").isMongoId(),
         check("content", "El contenido es obligatorio").not().isEmpty(),
         validarCampos
     ],
@@ -38,7 +38,6 @@ router.put(
     ],
     updateComment
 )
-
 
 router.delete(
     "/:id",

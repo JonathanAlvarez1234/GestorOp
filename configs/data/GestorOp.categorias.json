@@ -1,0 +1,78 @@
+[{
+  "_id": {
+    "$oid": "67ccef7ac17757fc5ca4974b"
+  },
+  "name": "General",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-03-09T01:31:38.075Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T01:31:38.075Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ccf9d37b8833a059387fac"
+  },
+  "name": "Ventas",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-03-09T02:15:47.518Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T02:15:47.518Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ccfa0e7b8833a059387fb0"
+  },
+  "name": "Electrodomesticos",
+  "state": false,
+  "createdAt": {
+    "$date": "2025-03-09T02:16:46.400Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T02:21:26.535Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ccfa357b8833a059387fb4"
+  },
+  "name": "Recetas de cocina",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-03-09T02:17:25.033Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T02:20:11.969Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ccfa717b8833a059387fb8"
+  },
+  "name": "Memes",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-03-09T02:18:25.052Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T02:18:25.052Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ccfa847b8833a059387fbc"
+  },
+  "name": "Noticias",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-03-09T02:18:44.760Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T02:18:44.760Z"
+  }
+}]

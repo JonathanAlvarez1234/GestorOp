@@ -3,22 +3,26 @@ import mongoose from "mongoose";
 const PublicationSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, "The title is required"]
+        required: true
     },
     content: {
         type: String,
-        required: [true, "The content is required"]
+        required: [true, "El contenido es necesario"]
     },
     creator: { 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User', 
+        ref: 'Usuario', 
         required: true },
     category: {  
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Category',  
+        ref: 'Categoria',  
         required: true 
     },
-    status: {
+    comments: [{ 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Comentario' 
+    }],
+    state: {
         type: Boolean,
         default: true
     }
@@ -27,5 +31,5 @@ const PublicationSchema = new mongoose.Schema({
     versionKey: false   
 });
 
-export default mongoose.model("Publication", PublicationSchema);
+export default mongoose.model("Publicacion", PublicationSchema);
 

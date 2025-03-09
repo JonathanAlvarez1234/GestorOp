@@ -1,75 +1,67 @@
-import User from "../users/user.model.js";
-import Publication from "./publication.model.js";
-import Category from "../categories/category.model.js";
+import Usuario from "../users/user.model.js";
+import Publicacion from "./publication.model.js";
+import Categoria from "../categories/category.model.js";
 
 export const savePublication = async (req, res) => {
     try {
         const { title, category, content } = req.body;
-        const user = await User.findById(req.usuario._id); 
-
+        const user = await Usuario.findById(req.usuario._id);
         if (!user) {
             return res.status(400).json({
                 success: false,
-                message: "User not found"
+                message: "Usuario no encontrado"
             });
         }
-
-        const categoryExists = await Category.findById(category);
+        const categoryExists = await Categoria.findById(category);
         if (!categoryExists) {
             return res.status(400).json({
                 success: false,
-                message: "Invalid category"
+                message: "Categoria no valida"
             });
         }
-
-        const post = new Publication({
+        const post = new Publicacion({
             title,
             category,
             content,
             creator: user._id,
             status: true
         });
-
         await post.save();
-
         res.status(200).json({
             success: true,
-            message: "Post created",
+            message: "Publicacion creada",
             post
         });
     } catch (error) {
         console.error(error);
         res.status(500).json({
             success: false,
-            message: "Error saving post",
+            message: "Error al guardar la publicacion",
             error
         });
     }
 };
 
-export const getPublications = async(req, res) => {
+export const getPublications = async (req, res) => {
     const { limite = 10, desde = 0 } = req.query;
-    const query = { status: true };
-    
+    const query = { state: true };
     try {
-        const posts = await Publication.find(query)
+        const posts = await Publicacion.find(query)
             .populate("creator", "nombre")
             .populate("category", "name")
             .skip(Number(desde))
             .limit(Number(limite));
 
-        const total = await Publication.countDocuments(query);
-
+        const total = await Publicacion.countDocuments(query);
         res.status(200).json({
             success: true,
             total,
             posts
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: "Error getting posts",
+            message: "Error al obtener las publicaciones",
             error
         });
     }
@@ -77,19 +69,17 @@ export const getPublications = async(req, res) => {
 
 export const searchPublication = async (req, res) => {
     const { id } = req.params;
-
     try {
-        const post = await Post.findById(id)
+        const post = await Publicacion.findById(id)
             .populate("creator", "nombre")
             .populate("category", "name");
 
         if (!post) {
             return res.status(404).json({
                 success: false,
-                message: "Post not found"
+                message: "Publicacion no encontrada"
             });
         }
-
         res.status(200).json({
             success: true,
             post
@@ -97,44 +87,40 @@ export const searchPublication = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: "Error searching for post",
+            message: "Error al buscar la publicacion",
             error
         });
     }
 };
 
-export const deletePublication = async(req, res) => {
+export const deletePublication = async (req, res) => {
     const { id } = req.params;
-
     try {
-        const post = await Publication.findById(id);
-
+        const post = await Publicacion.findById(id)
         if (!post) {
             return res.status(404).json({
                 success: false,
-                msg: "Post not found"
+                msg: "Publicacion no encontrada"
             });
         }
-
-        if (req.usuario.role === "USER_ROLE" && post.creator.toString() !== req.usuario._id.toString()) {
-            return res.status(400).json({ 
+        if (req.usuario.role !== "ADMIN_ROLE" && post.creator.toString() !== req.usuario._id.toString()) {
+            return res.status(403).json({ 
                 success: false, 
-                msg: "No tienen autorización para eliminar esta publicación" 
+                msg: "Solamente un administrador puede eliminar esta publicacion" 
             });
         }
-
-        post.status = false;
+        post.state = false;
         await post.save();
 
         res.status(200).json({
             success: true,
-            message: "Post deleted succesfully"
+            message: "Publicacion eliminada correctamente"
         });
     } catch (error) {
         console.error(error);
         res.status(500).json({
             success: false,
-            message: "Error deleting post",
+            message: "Error al eliminar la publicacion",
             error
         });
     }
@@ -148,43 +134,37 @@ export const updatePublication = async (req, res) => {
         if (!req.usuario) {
             return res.status(401).json({
                 success: false,
-                message: "Unauthenticated user"
+                message: "Usuario no encontrado"
             });
         }
-
-        const post = await Publication.findById(id).populate("creator");
-
+        const post = await Publicacion.findById(id).populate("creator");
         if (!post) {
             return res.status(404).json({
                 success: false,
-                message: "Post not found"
+                message: "Publicacion no encontrada"
             });
         }
-
-        if (req.usuario.role === "USER_ROLE" && post.creator._id.toString() !== req.usuario._id.toString()) {
-            return res.status(400).json({ 
+        if (req.usuario.role !== "ADMIN_ROLE" && post.creator._id.toString() !== req.usuario._id.toString()) {
+            return res.status(403).json({ 
                 success: false, 
-                msg: "No tiene auorización para modificar esta publicación" 
+                msg: "No tienes autorización para modificar esta publicación" 
             });
         }
-
         if (category) {
-            const categoryExists = await Category.findById(category);
+            const categoryExists = await Categoria.findById(category);
             if (!categoryExists) {
                 return res.status(400).json({
                     success: false,
-                    message: "Invalid category"
+                    message: "Categoría inválida"
                 });
             }
             post.category = category;
         }
-
         Object.assign(post, data);
         await post.save();
-
         res.status(200).json({
             success: true,
-            msg: "Post updated",
+            msg: "Publicación actualizada",
             post
         });
 
@@ -192,7 +172,7 @@ export const updatePublication = async (req, res) => {
         console.error(error);
         res.status(500).json({
             success: false,
-            msg: "Error updating post",
+            msg: "Error al actualizar la publicación",
             error
         });
     }

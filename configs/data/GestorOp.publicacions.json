@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "67ccfb9c7b8833a059387fcb"
+  },
+  "title": "Teclados",
+  "content": "Teclados muy baratos, detalles: les falta teclas :(",
+  "creator": {
+    "$oid": "67ccf41f7b8833a059387fa4"
+  },
+  "category": {
+    "$oid": "67ccf9d37b8833a059387fac"
+  },
+  "state": true,
+  "createdAt": {
+    "$date": "2025-03-09T02:23:24.991Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T03:18:04.834Z"
+  },
+  "comments": [
+    {
+      "$oid": "67cd086cc37654564127ba81"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67ccfd8c7b8833a059387fd1"
+  },
+  "title": "Se vende carro",
+  "content": "Toyota corolla en bues estado, unico detalle, le fantan llantas",
+  "creator": {
+    "$oid": "67ccf373799d888729fee4b1"
+  },
+  "category": {
+    "$oid": "67ccf9d37b8833a059387fac"
+  },
+  "state": true,
+  "createdAt": {
+    "$date": "2025-03-09T02:31:40.871Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T03:16:13.637Z"
+  },
+  "comments": [
+    {
+      "$oid": "67cd07fdc37654564127ba7a"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67ccffd17b8833a059387fd7"
+  },
+  "title": "Ultima hora",
+  "content": "Estudiante de kinal no se gradua por perder una clase",
+  "creator": {
+    "$oid": "67ccf3d87b8833a059387f9c"
+  },
+  "category": {
+    "$oid": "67ccfa847b8833a059387fbc"
+  },
+  "state": false,
+  "createdAt": {
+    "$date": "2025-03-09T02:41:21.974Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T02:46:49.045Z"
+  }
+}]

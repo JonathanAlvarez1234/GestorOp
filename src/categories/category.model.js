@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 const CategorySchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, "The category is required"],
+        required: true,
         unique: true
     },
-    status: {
+    state: {
         type: Boolean,
         default: true
     }
@@ -15,4 +15,4 @@ const CategorySchema = new mongoose.Schema({
     versionKey: false
 });
 
-export default mongoose.model("Category", CategorySchema);
+export default mongoose.model("Categoria", CategorySchema);

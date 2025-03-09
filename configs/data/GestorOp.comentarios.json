@@ -1,0 +1,38 @@
+[{
+  "_id": {
+    "$oid": "67cd07fdc37654564127ba7a"
+  },
+  "content": "Me interesa, bendiciones mi estimado",
+  "author": {
+    "$oid": "67ccf373799d888729fee4b1"
+  },
+  "publication": {
+    "$oid": "67ccfd8c7b8833a059387fd1"
+  },
+  "state": true,
+  "createdAt": {
+    "$date": "2025-03-09T03:16:13.631Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T03:16:13.631Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cd086cc37654564127ba81"
+  },
+  "content": "Quiero 2 pa mi compu y la de mi compa",
+  "author": {
+    "$oid": "67ccf3d87b8833a059387f9c"
+  },
+  "publication": {
+    "$oid": "67ccfb9c7b8833a059387fcb"
+  },
+  "state": false,
+  "createdAt": {
+    "$date": "2025-03-09T03:18:04.832Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-09T03:22:20.378Z"
+  }
+}]

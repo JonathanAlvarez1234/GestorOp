@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "c0e6b73d-8395-4eeb-bcc4-aba2bc49f2c7",
-		"name": "Categories",
+		"_postman_id": "886819af-c2d6-41bd-b33c-f1cc266e0ca3",
+		"name": "Comentarios",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37557519"
 	},
@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZWY3OWMxNzc1N2ZjNWNhNDk3NDYiLCJpYXQiOjE3NDE0ODYzOTMsImV4cCI6MTc0MTQ4OTk5M30.w02EAAYFF9j_w62UdvBlrlfXSm61Q7LbFWhtwYFdsdY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZjNkODdiODgzM2EwNTkzODdmOWMiLCJpYXQiOjE3NDE0OTAyNzEsImV4cCI6MTc0MTQ5Mzg3MX0.VcovVr_HmAK4cgXc1vc0CXOPFEZMxIcnGUXjkvZPvj8",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Noticias\"\r\n}",
+					"raw": "{\r\n    \"content\":\"Quiero 5 para mi compu\",\r\n    \"email\":\"doxcal@gmail.com\",\r\n    \"publicationId\":\"67ccfb9c7b8833a059387fcb\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -27,7 +27,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3001/gestorOp/v1/categories/",
+					"raw": "http://localhost:3001/gestorOp/v1/comments/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -36,7 +36,7 @@
 					"path": [
 						"gestorOp",
 						"v1",
-						"categories",
+						"comments",
 						""
 					]
 				}
@@ -50,13 +50,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZWY3OWMxNzc1N2ZjNWNhNDk3NDYiLCJpYXQiOjE3NDE0ODYzOTMsImV4cCI6MTc0MTQ4OTk5M30.w02EAAYFF9j_w62UdvBlrlfXSm61Q7LbFWhtwYFdsdY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZjNkODdiODgzM2EwNTkzODdmOWMiLCJpYXQiOjE3NDE0OTA0MDEsImV4cCI6MTc0MTQ5NDAwMX0.f1FQIToACrl3L9a1aBe3pL_nLb69Yb0IiF7n-6f1A9U",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Recetas de cocina\"\r\n}",
+					"raw": "{\r\n    \"content\":\"Quiero 2 pa mi compu y la de mi compa\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,7 +64,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3001/gestorOp/v1/categories/67ccfa357b8833a059387fb4",
+					"raw": "http://localhost:3001/gestorOp/v1/comments/67cd086cc37654564127ba81",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -73,8 +73,8 @@
 					"path": [
 						"gestorOp",
 						"v1",
-						"categories",
-						"67ccfa357b8833a059387fb4"
+						"comments",
+						"67cd086cc37654564127ba81"
 					]
 				}
 			},
@@ -82,23 +82,11 @@
 		},
 		{
 			"name": "Ver",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:3001/gestorOp/v1/categories/",
+					"raw": "http://localhost:3001/gestorOp/v1/comments/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -107,7 +95,7 @@
 					"path": [
 						"gestorOp",
 						"v1",
-						"categories",
+						"comments",
 						""
 					]
 				}
@@ -115,27 +103,18 @@
 			"response": []
 		},
 		{
-			"name": "Borrar",
+			"name": "Eliminar",
 			"request": {
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZWY3OWMxNzc1N2ZjNWNhNDk3NDYiLCJpYXQiOjE3NDE0ODYzOTMsImV4cCI6MTc0MTQ4OTk5M30.w02EAAYFF9j_w62UdvBlrlfXSm61Q7LbFWhtwYFdsdY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NjZjNkODdiODgzM2EwNTkzODdmOWMiLCJpYXQiOjE3NDE0OTA1MTYsImV4cCI6MTc0MTQ5NDExNn0.-5AfqBjPvKp7Pnl5naKKfg9_ZrAYlJo_ABH5g0tJPLg",
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:3001/gestorOp/v1/categories/67ccfa0e7b8833a059387fb0",
+					"raw": "http://localhost:3001/gestorOp/v1/comments/67cd086cc37654564127ba81",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -144,8 +123,8 @@
 					"path": [
 						"gestorOp",
 						"v1",
-						"categories",
-						"67ccfa0e7b8833a059387fb0"
+						"comments",
+						"67cd086cc37654564127ba81"
 					]
 				}
 			},
